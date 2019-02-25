@@ -33,6 +33,7 @@ def guess_letter(guessed, board, word):
 
 
 def hangman():
+    '''Start hangaman, used a function to easily loop to play multiple rounds'''
     current_word = get_word()
     game_board = generate_board(current_word)
     lifes = 15;
