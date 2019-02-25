@@ -12,6 +12,3 @@ def roll_dice(n_dices = 1, n_sides = 6):
         for x in range(n_dices):
             results.append(random.randint(0,n_sides))
     return results
-
-
-print(roll_dice(3, 20))
