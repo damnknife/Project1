@@ -28,22 +28,39 @@ def guess_letter(guessed, board, word):
         if list(word)[letters] == guessed:
             board[letters] = guessed
             flag_guess += 1
-    print(word)
+    #print(word)
     return ''.join(board), flag_guess != 0
 
-current_word = get_word()
-game_board = generate_board(current_word)
-lifes = 15;
 
-while (current_word != game_board):
+def hangman():
+    current_word = get_word()
+    game_board = generate_board(current_word)
+    lifes = 15;
+    while (current_word != game_board) and (lifes !=0):
 
-    print(game_board, '\n You have ', str(lifes), ' lifes. Guess a letter:\n')
-    guess = input()
-    while len(guess) != 1:
-        print('Invalid input, guess a SINGLE letter:\n')
+        print(game_board, '\n You have ', str(lifes), ' lifes. Guess a letter:\n')
         guess = input()
-    game_board, life_check = guess_letter(guess, game_board, current_word)
-    print(game_board)
-    print(life_check)
-    if life_check == False:
-        lifes -= 1
+        while len(guess) != 1:
+            print('Invalid input, guess a SINGLE letter:\n')
+            guess = input()
+        game_board, life_check = guess_letter(guess, game_board, current_word)
+
+        if life_check == False:
+            lifes -= 1
+    if lifes == 0:
+        print('You lost, try again?(y/n)\n')
+    else:
+        print('You won, Another round?(y/n)\n')
+
+round = True
+
+while round:
+    hangman()
+    round = input()
+    if round.lower() == 'y':
+        round = True
+    elif round.lower() == 'n':
+        round = False
+    else:
+        print('Invalid Input')
+        round = False
