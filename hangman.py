@@ -12,10 +12,7 @@ def get_word(src = 'hangman_words.txt'):
 
 def generate_board(word):
     '''Generate a string with the same # of _ as letters in the word'''
-    board = ''
-    for letter in word:
-        board = board + '_'
-    return board
+    return ''.join(['_' for x in word])
 
 
 def guess_letter(guessed, board, word):
@@ -49,9 +46,9 @@ def hangman():
         if life_check == False:
             lifes -= 1
     if lifes == 0:
-        print('You lost, try again?(y/n)\n')
+        print('You lost, the word was', current_word.upper() ,'. Try again?(y/n)\n')
     else:
-        print('You won, Another round?(y/n)\n')
+        print('You won,the word was', current_word.upper() ,', Another round?(y/n)\n')
 
 round = True
 
